@@ -9,8 +9,8 @@ import com.example.bruno.jumper.graphics.Cores
  */
 class Passaro(var altura: Float = 100F) {
 
-    private val X: Float = 200F
-    private val RAIO: Float = 50F
+    private val X: Float = 100F
+    private val RAIO: Float = 40F
     private val VERMELHO: Paint? = Cores.corDoPassaro()
 
     fun desenhaNoCanvas(canvas: Canvas) {
