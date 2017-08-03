@@ -12,8 +12,8 @@ import com.example.bruno.jumper.elements.Passaro
 import com.example.bruno.jumper.graphics.Tela
 
 /**
- * Created by Bruno on 13/07/2017.
- */
+* Created by Bruno on 13/07/2017.
+*/
 
 class Game(context: Context): SurfaceView(context), Runnable, View.OnTouchListener {
     private var isRunning: Boolean = false
