@@ -13,4 +13,10 @@ object Cores : Paint() {
         paint.color = Color.RED
         return paint
     }
+
+    fun corDoCano(): Paint {
+        val paint = Paint()
+        paint.color = Color.GREEN
+        return paint
+    }
 }
