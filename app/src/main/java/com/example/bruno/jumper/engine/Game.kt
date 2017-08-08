@@ -9,6 +9,7 @@ import android.view.SurfaceView
 import android.view.View
 import com.example.bruno.jumper.R
 import com.example.bruno.jumper.elements.Cano
+import com.example.bruno.jumper.elements.Canos
 import com.example.bruno.jumper.elements.Passaro
 import com.example.bruno.jumper.graphics.Tela
 
@@ -20,7 +21,7 @@ class Game(context: Context): SurfaceView(context), Runnable, View.OnTouchListen
     private var isRunning: Boolean = false
     private val mHolder: SurfaceHolder = holder
     private lateinit var passaro: Passaro
-    private lateinit var cano: Cano
+    private lateinit var canos: Canos
     private lateinit var background: Bitmap
     private lateinit var back: Bitmap
 
@@ -31,7 +32,7 @@ class Game(context: Context): SurfaceView(context), Runnable, View.OnTouchListen
     fun inicializaElementos() {
         val tela = Tela(context)
         passaro = Passaro()
-        cano = Cano(tela)
+        canos = Canos(context)
         back = BitmapFactory.decodeResource(resources, R.drawable.background)
         background = Bitmap.createScaledBitmap(back, tela.largura, tela.altura, false)
         setOnTouchListener(this)
@@ -46,8 +47,7 @@ class Game(context: Context): SurfaceView(context), Runnable, View.OnTouchListen
             canvas.drawBitmap(background,0F,0F, null)
             passaro.desenhaNoCanvas(canvas)
             passaro.cai()
-            cano.desenhaCanoInferior(canvas)
-            cano.moveCano()
+            canos.inicializaCanos(canvas)
 
             mHolder.unlockCanvasAndPost(canvas)
         }
