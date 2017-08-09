@@ -12,22 +12,21 @@ import java.util.*
 class Canos(context: Context) {
 
     private val quantidadeCanos: Int = 5
+    private val distanciaCanos: Float = 250F
     private val canosList: ArrayList<Cano> = ArrayList()
 
     init {
         val tela = Tela(context)
         for (i in 0..quantidadeCanos) {
-            val cano: Cano = Cano(tela)
+            val cano: Cano = Cano(tela, distanciaCanos * i)
             canosList.add(cano)
         }
     }
 
     fun inicializaCanos(canvas: Canvas) {
-        for (cano in canosList) {
-            cano.desenhaCanoInferior(canvas)
-            cano.moveCano()
-        }
+       canosList.forEach { cano ->
+           cano.desenhaCanoInferior(canvas)
+           cano.moveCano()
+       }
     }
-
 }
-
