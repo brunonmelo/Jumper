@@ -12,21 +12,43 @@ import java.util.*
 class Canos(context: Context) {
 
     private val quantidadeCanos: Int = 5
-    private val distanciaCanos: Float = 250F
+    private val distanciaCanos: Float = 200F
     private val canosList: ArrayList<Cano> = ArrayList()
+    private val tela = Tela(context)
 
     init {
-        val tela = Tela(context)
-        for (i in 0..quantidadeCanos) {
-            val cano: Cano = Cano(tela, distanciaCanos * i)
+        var dist: Float = tela.largura.toFloat()
+        for(i in 0..quantidadeCanos){
+            val cano = Cano(tela, dist)
             canosList.add(cano)
+            dist += distanciaCanos
         }
     }
 
-    fun inicializaCanos(canvas: Canvas) {
-       canosList.forEach { cano ->
-           cano.desenhaCanoInferior(canvas)
-           cano.moveCano()
-       }
+    fun desenhaCanos(canvas: Canvas) {
+        canosList.forEach { cano ->
+            cano.desenhaCanoInferior(canvas)
+            cano.desenhaCanoSuperior(canvas)
+        }
+    }
+
+    fun move() {
+        val iterator = canosList.listIterator()
+        while (iterator.hasNext()) {
+            val cano = iterator.next()
+            cano.moveCano()
+            if (cano.saiuDaTela()) {
+                iterator.remove()
+                iterator.add(Cano(tela, getMaximo()))
+            }
+        }
+    }
+
+    private fun getMaximo(): Float {
+        var maximo: Float = 0F
+        for (cano in canosList) {
+            maximo = Math.max(cano.posicao, maximo)
+        }
+        return maximo + distanciaCanos
     }
 }
