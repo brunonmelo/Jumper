@@ -31,7 +31,7 @@ class Game(context: Context): SurfaceView(context), Runnable, View.OnTouchListen
 
     fun inicializaElementos() {
         val tela = Tela(context)
-        passaro = Passaro()
+        passaro = Passaro(tela)
         canos = Canos(context)
         back = BitmapFactory.decodeResource(resources, R.drawable.background)
         background = Bitmap.createScaledBitmap(back, tela.largura, tela.altura, false)
