@@ -2,6 +2,8 @@
   <component name="FindSettings">
     <option name="customScope" value="Project 'AplicacaoDeComunicacaoNFCe'" />
     <option name="defaultScopeName" value="Project 'AplicacaoDeComunicacaoNFCe'" />
+    <option name="regularExpressions" value="true" />
+    <option name="REGULAR_EXPRESSIONS" value="true" />
     <option name="SEARCH_SCOPE" value="Project 'AplicacaoDeComunicacaoNFCe'" />
   </component>
 </application>
