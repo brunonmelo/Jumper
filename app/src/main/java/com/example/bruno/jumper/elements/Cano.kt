@@ -10,7 +10,7 @@ import com.example.bruno.jumper.graphics.Tela
  */
 
 class Cano(val tela: Tela, var posicao: Float) {
-    private val LARGURA_DO_CANO = 70F
+    val LARGURA_DO_CANO = 70F
     private val ALTURA_BASE = 70F
 
     private val randomValue = valorAleatorio()
@@ -19,6 +19,7 @@ class Cano(val tela: Tela, var posicao: Float) {
     private val alturaDoCanoSuperior = ALTURA_BASE + randomValue
 
     private val corDoCano = Cores.corDoCano()
+    private var pontuado = false
 
     private fun valorAleatorio(): Float {
         return (Math.random() * 300).toFloat()
@@ -33,11 +34,19 @@ class Cano(val tela: Tela, var posicao: Float) {
     }
 
     fun moveCano() {
-        posicao -= 4
+        posicao -= 3
     }
 
     fun saiuDaTela(): Boolean {
         return posicao + LARGURA_DO_CANO < 0
+    }
+
+    fun pontua() {
+        pontuado = true
+    }
+
+    fun isPontuado(): Boolean {
+        return pontuado
     }
 
 }

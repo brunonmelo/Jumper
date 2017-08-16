@@ -51,4 +51,14 @@ class Canos(context: Context) {
         }
         return maximo + distanciaCanos
     }
+
+    fun  marcaPontuacao(passaro: Passaro): Boolean {
+        canosList.forEach { cano ->
+            if(cano.posicao + cano.LARGURA_DO_CANO < passaro.X + passaro.RAIO && !cano.isPontuado()) {
+                cano.pontua()
+                return true
+            }
+        }
+        return false
+    }
 }
