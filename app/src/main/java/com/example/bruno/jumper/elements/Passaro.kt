@@ -11,8 +11,8 @@ import com.example.bruno.jumper.graphics.Tela
 class Passaro(val tela: Tela) {
 
     private var altura: Float = 100F
-    private val X: Float = 70F
-    private val RAIO: Float = 40F
+    val X: Float = 70F
+    val RAIO: Float = 40F
     private val VERMELHO: Paint? = Cores.corDoPassaro()
     private val aceleracao = 1.4
     private var velocidade: Double = -10.0

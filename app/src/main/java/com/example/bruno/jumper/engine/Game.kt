@@ -10,6 +10,7 @@ import android.view.View
 import com.example.bruno.jumper.R
 import com.example.bruno.jumper.elements.Canos
 import com.example.bruno.jumper.elements.Passaro
+import com.example.bruno.jumper.elements.Pontuacao
 import com.example.bruno.jumper.graphics.Tela
 
 /**
@@ -19,21 +20,14 @@ import com.example.bruno.jumper.graphics.Tela
 class Game(context: Context) : SurfaceView(context), Runnable, View.OnTouchListener {
     private var isRunning: Boolean = false
     private val mHolder: SurfaceHolder = holder
-    private lateinit var passaro: Passaro
-    private lateinit var canos: Canos
-    private lateinit var background: Bitmap
-    private lateinit var back: Bitmap
+    private val canos: Canos = Canos(context)
+    private val tela = Tela(context)
+    private val back: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.background)
+    private val passaro = Passaro(tela)
+    private val background = Bitmap.createScaledBitmap(back, back.width, tela.altura, false)
+    private val pontuacao = Pontuacao(passaro, canos)
 
     init {
-        inicializaElementos()
-    }
-
-    fun inicializaElementos() {
-        val tela = Tela(context)
-        passaro = Passaro(tela)
-        canos = Canos(context)
-        back = BitmapFactory.decodeResource(resources, R.drawable.background)
-        background = Bitmap.createScaledBitmap(back, back.width, tela.altura, false)
         setOnTouchListener(this)
     }
 
@@ -48,6 +42,7 @@ class Game(context: Context) : SurfaceView(context), Runnable, View.OnTouchListe
             passaro.cai()
             canos.desenhaCanos(canvas)
             canos.move()
+            pontuacao.desenhaPontuacao(canvas)
 
             mHolder.unlockCanvasAndPost(canvas)
         }
