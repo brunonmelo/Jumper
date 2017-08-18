@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
 import com.example.bruno.jumper.engine.Game
-import com.example.bruno.jumper.extra.FullScreanHelper
+import com.example.bruno.jumper.extra.FullScreenHelper
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        FullScreanHelper(this)
+        FullScreenHelper(this)
 
         game = Game(this)
 

@@ -9,24 +9,21 @@ import android.graphics.Typeface
  */
 
 object Cores : Paint() {
-    fun corDoPassaro(): Paint {
-        val paint = Paint()
-        paint.color = Color.RED
-        return paint
-    }
-
-    fun corDoCano(): Paint {
-        val paint = Paint()
-        paint.color = Color.GREEN
-        return paint
-    }
-
     fun  corDoNumero(): Paint {
         val paint = Paint()
         paint.color = Color.WHITE
         paint.textSize = 80F
         paint.typeface = Typeface.DEFAULT_BOLD
         paint.setShadowLayer(2F, 3F, 3F, Color.BLACK)
+        return paint
+    }
+
+    fun corDoGameOver(): Paint {
+        val paint = Paint()
+        paint.color = Color.RED
+        paint.textSize = 40F
+        paint.typeface = Typeface.DEFAULT_BOLD
+        paint.setShadowLayer(1F, 2F, 2F, Color.BLACK)
         return paint
     }
 }

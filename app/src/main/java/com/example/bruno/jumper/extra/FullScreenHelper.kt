@@ -8,7 +8,8 @@ import android.view.View
 /**
  * Created by Bruno on 13/07/2017.
  */
-class FullScreanHelper(activity: Activity) {
+
+class FullScreenHelper(activity: Activity) {
     init {
         var newUiOptions = R.attr.uiOptions
 
@@ -21,7 +22,7 @@ class FullScreanHelper(activity: Activity) {
             newUiOptions = newUiOptions xor View.SYSTEM_UI_FLAG_FULLSCREEN
         }
 
-        if (Build.VERSION.SDK_INT >= 18) {
+        if (Build.VERSION.SDK_INT >= 19) {
             newUiOptions = newUiOptions xor View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         }
 
