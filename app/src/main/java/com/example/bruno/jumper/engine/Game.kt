@@ -24,10 +24,11 @@ class Game(context: Context) : SurfaceView(context), Runnable, View.OnTouchListe
     private val canos: Canos = Canos(context)
     private val tela = Tela(context)
     private val back: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.background)
-    private val passaro = Passaro(tela)
+    private val som: Som = Som(context)
+    private val passaro = Passaro(tela, context, som)
     private val background = Bitmap.createScaledBitmap(back, back.width, tela.altura, false)
-    private val pontuacao = Pontuacao(passaro, canos)
-    private val verificadorDeColisao = VerificadorDeColisao(canos, passaro)
+    private val pontuacao = Pontuacao(passaro, canos, som)
+    private val verificadorDeColisao = VerificadorDeColisao(canos, passaro, som)
 
     init {
         setOnTouchListener(this)
@@ -47,6 +48,7 @@ class Game(context: Context) : SurfaceView(context), Runnable, View.OnTouchListe
 
             if(verificadorDeColisao.verificaColisao()) {
                 GameOver(tela).desenhaGameOverNaTela(canvas)
+                som.paraSom()
                 isRunning = false
             }
 

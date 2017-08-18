@@ -7,14 +7,19 @@ import com.example.bruno.jumper.elements.Passaro
 /**
  * Created by Bruno Melo on 18/08/17.
  */
-class VerificadorDeColisao(val canos: Canos, val passaro: Passaro) {
+
+class VerificadorDeColisao(private val canos: Canos,
+                           private val passaro: Passaro,
+                           private val som: Som) {
 
     fun verificaColisao(): Boolean {
         val canosList = canos.getCanosList()
         canosList.forEach { cano ->
             if (temColisaoHorizontal(passaro, cano)
-                    && temColisaoVertical(passaro, cano))
+                    && temColisaoVertical(passaro, cano)) {
+                som.somColisao()
                 return true
+            }
         }
         return false
     }

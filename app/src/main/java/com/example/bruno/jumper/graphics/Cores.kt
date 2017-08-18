@@ -9,18 +9,6 @@ import android.graphics.Typeface
  */
 
 object Cores : Paint() {
-    fun corDoPassaro(): Paint {
-        val paint = Paint()
-        paint.color = Color.RED
-        return paint
-    }
-
-    fun corDoCano(): Paint {
-        val paint = Paint()
-        paint.color = Color.GREEN
-        return paint
-    }
-
     fun  corDoNumero(): Paint {
         val paint = Paint()
         paint.color = Color.WHITE
