@@ -26,11 +26,20 @@ class Passaro(val tela: Tela) {
         if (!chegouNoChao) {
             altura += (velocidade / 4).toFloat()
             velocidade += aceleracao
+        } else {
+            velocidade = 0.0
+            altura = tela.altura.toFloat() - RAIO
         }
     }
 
     fun pula() {
         val chegouNoTeto = altura - RAIO < 0
         if (!chegouNoTeto) velocidade = -30.0
+        else {
+            velocidade = 0.0
+            altura = 0F + RAIO
+        }
     }
+
+    fun altura(): Float = altura
 }

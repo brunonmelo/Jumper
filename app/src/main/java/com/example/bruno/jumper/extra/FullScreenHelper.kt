@@ -8,7 +8,7 @@ import android.view.View
 /**
  * Created by Bruno on 13/07/2017.
  */
-class FullScreanHelper(activity: Activity) {
+class FullScreenHelper(activity: Activity) {
     init {
         var newUiOptions = R.attr.uiOptions
 

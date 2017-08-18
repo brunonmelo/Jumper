@@ -18,8 +18,8 @@ class Canos(context: Context) {
 
     init {
         var dist: Float = tela.largura.toFloat()
-        for(i in 0..quantidadeCanos){
-            val cano = Cano(tela, dist)
+        for (i in 0..quantidadeCanos) {
+            val cano = Cano(tela, dist + distanciaCanos)
             canosList.add(cano)
             dist += distanciaCanos
         }
@@ -45,20 +45,22 @@ class Canos(context: Context) {
     }
 
     private fun getMaximo(): Float {
-        var maximo: Float = 0F
-        for (cano in canosList) {
-            maximo = Math.max(cano.posicao, maximo)
-        }
+        val maximo = canosList
+                .map { it.posicao }
+                .max()
+                ?: 0F
         return maximo + distanciaCanos
     }
 
-    fun  marcaPontuacao(passaro: Passaro): Boolean {
+    fun marcaPontuacao(passaro: Passaro): Boolean {
         canosList.forEach { cano ->
-            if(cano.posicao + cano.LARGURA_DO_CANO < passaro.X + passaro.RAIO && !cano.isPontuado()) {
+            if (cano.posicao + cano.LARGURA_DO_CANO < passaro.X + passaro.RAIO && !cano.isPontuado()) {
                 cano.pontua()
                 return true
             }
         }
         return false
     }
+
+    fun getCanosList(): ArrayList<Cano> = canosList
 }

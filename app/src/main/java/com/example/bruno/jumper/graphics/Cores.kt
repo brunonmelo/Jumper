@@ -29,4 +29,13 @@ object Cores : Paint() {
         paint.setShadowLayer(2F, 3F, 3F, Color.BLACK)
         return paint
     }
+
+    fun corDoGameOver(): Paint {
+        val paint = Paint()
+        paint.color = Color.RED
+        paint.textSize = 40F
+        paint.typeface = Typeface.DEFAULT_BOLD
+        paint.setShadowLayer(1F, 2F, 2F, Color.BLACK)
+        return paint
+    }
 }

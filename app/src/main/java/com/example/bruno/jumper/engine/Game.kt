@@ -9,6 +9,7 @@ import android.view.SurfaceView
 import android.view.View
 import com.example.bruno.jumper.R
 import com.example.bruno.jumper.elements.Canos
+import com.example.bruno.jumper.elements.GameOver
 import com.example.bruno.jumper.elements.Passaro
 import com.example.bruno.jumper.elements.Pontuacao
 import com.example.bruno.jumper.graphics.Tela
@@ -26,6 +27,7 @@ class Game(context: Context) : SurfaceView(context), Runnable, View.OnTouchListe
     private val passaro = Passaro(tela)
     private val background = Bitmap.createScaledBitmap(back, back.width, tela.altura, false)
     private val pontuacao = Pontuacao(passaro, canos)
+    private val verificadorDeColisao = VerificadorDeColisao(canos, passaro)
 
     init {
         setOnTouchListener(this)
@@ -42,6 +44,12 @@ class Game(context: Context) : SurfaceView(context), Runnable, View.OnTouchListe
             passaro.cai()
             canos.desenhaCanos(canvas)
             canos.move()
+
+            if(verificadorDeColisao.verificaColisao()) {
+                GameOver(tela).desenhaGameOverNaTela(canvas)
+                isRunning = false
+            }
+
             pontuacao.desenhaPontuacao(canvas)
 
             mHolder.unlockCanvasAndPost(canvas)
